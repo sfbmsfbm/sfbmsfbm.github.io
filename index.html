@@ -152,6 +152,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-如何在Mac 上搭建一个hexo博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/17/%E5%A6%82%E4%BD%95%E5%9C%A8Mac%20%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2/">如何在Mac 上搭建一个hexo博客</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/17/%E5%A6%82%E4%BD%95%E5%9C%A8Mac%20%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2020-04-17T02:19:33.891Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="该文档教程只有一部分内容是按照顺序操作的，其他详细操作需自己去其他地方学习或者等后续更新，不足之处欢迎指正。"><a href="#该文档教程只有一部分内容是按照顺序操作的，其他详细操作需自己去其他地方学习或者等后续更新，不足之处欢迎指正。" class="headerlink" title="该文档教程只有一部分内容是按照顺序操作的，其他详细操作需自己去其他地方学习或者等后续更新，不足之处欢迎指正。"></a>该文档教程只有一部分内容是按照顺序操作的，其他详细操作需自己去其他地方学习或者等后续更新，不足之处欢迎指正。</h2><h3 id="安装Nodejs"><a href="#安装Nodejs" class="headerlink" title="安装Nodejs"></a>安装Nodejs</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">node -v <span class="comment">/*查看node版本*/</span></span><br><span class="line">npm -v <span class="comment">/*查看npm版本*/</span></span><br><span class="line">npm install -g cnpm --registry=http:<span class="comment">//registry.npm.taobao.org /*安装淘宝的cnpm管理器*/</span></span><br><span class="line">cnpm -v <span class="comment">/*查看cnpm版本*/</span></span><br><span class="line">cnpm install -g hexo-cli <span class="comment">/*安装hexo框架*/</span></span><br><span class="line">hexo -v <span class="comment">/*查看hexo版本*/</span></span><br><span class="line">mkdir blog <span class="comment">/*创建blog目录*/</span></span><br><span class="line">cd blog <span class="comment">/*进入blog目录*/</span></span><br><span class="line">sudo hexo init <span class="comment">/*生成博客 初始化博客*/</span></span><br><span class="line">hexo s <span class="comment">/*启动本地博客服务器*/</span></span><br><span class="line">http:<span class="comment">//localhost:4000/ /*本地访问地址*/</span></span><br><span class="line">hexo n <span class="string">"我的第一篇文章"</span> <span class="comment">/*创建新的文章*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="返回blog目录"><a href="#返回blog目录" class="headerlink" title="返回blog目录"></a>返回blog目录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment">/*清理*/</span></span><br><span class="line">hexo g <span class="comment">/*生成*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Github创建一个新的仓库-YourGithubName-github-io"><a href="#Github创建一个新的仓库-YourGithubName-github-io" class="headerlink" title="Github创建一个新的仓库 YourGithubName.github.io"></a>Github创建一个新的仓库 YourGithubName.github.io</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git <span class="comment">/*在blog目录下安装git部署插件*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="配置 _config.yml"></a>配置 _config.yml</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: https:<span class="comment">//github.com/YourGithubName/YourGithubName.github.io.git</span></span><br><span class="line">branch:master</span><br></pre></td></tr></table></figure>
+
+<h4 id="完成后按住-“shift”-“-”-输入”wq”完成保存配置"><a href="#完成后按住-“shift”-“-”-输入”wq”完成保存配置" class="headerlink" title="完成后按住 “shift” + “:” 输入”wq”完成保存配置"></a>完成后按住 “shift” + “:” 输入”wq”完成保存配置</h4><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo d <span class="comment">/*部署到GitHub仓库里*/</span></span><br><span class="line">https:<span class="comment">//YourGithubName.github.io/ /*访问这个地址可以查看博客*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/litten/hexo-theme-yilia.git theme/yilia /*下载yilia主题到本地*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="修改hexo根目录下的-config-yml-文件-：theme-yilia"><a href="#修改hexo根目录下的-config-yml-文件-：theme-yilia" class="headerlink" title="修改hexo根目录下的 _config.yml 文件 ：theme: yilia"></a>修改hexo根目录下的 _config.yml 文件 ：theme: yilia</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo c <span class="comment">/*清理一下*/</span></span><br><span class="line">hexo g <span class="comment">/*生成*/</span></span><br><span class="line">hexo d <span class="comment">/*部署到远程Github仓库</span></span><br><span class="line"><span class="comment">https://YourGithubName.github.io/ /*查看博客*/</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/17/%E5%A6%82%E4%BD%95%E5%9C%A8Mac%20%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
