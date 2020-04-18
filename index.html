@@ -152,6 +152,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-二叉搜索树模版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/18/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%A8%A1%E7%89%88/">二叉搜索树模版</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/18/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%A8%A1%E7%89%88/" class="archive-article-date">
+  	<time datetime="2020-04-18T15:49:26.247Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="结点定义"><a href="#结点定义" class="headerlink" title="结点定义"></a>结点定义</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct node&#123;</span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    node* lchild;</span><br><span class="line">    node* rchild;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新建结点"><a href="#新建结点" class="headerlink" title="新建结点"></a>新建结点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">node* newNode(<span class="keyword">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">    node* root = <span class="keyword">new</span> node;</span><br><span class="line">    root-&gt;data = x;</span><br><span class="line">    root-&gt;lchild = root-&gt;rchild = NULL;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="搜索值"><a href="#搜索值" class="headerlink" title="搜索值"></a>搜索值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">search</span><span class="params">(node* root, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(<span class="string">"search failed\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x == root-&gt;data)&#123;</span><br><span class="line">        printf(<span class="string">"%d\n"</span>,root-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x &lt; root-&gt;data)&#123;</span><br><span class="line">        search(root-&gt;lchild, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        search(root-&gt;rchild, x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入值"><a href="#插入值" class="headerlink" title="插入值"></a>插入值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(node* &amp;root, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == NULL)&#123;</span><br><span class="line">        root = newNode(x);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x == root-&gt;data)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x &lt; root-&gt;data)&#123;</span><br><span class="line">        insert(root-&gt;lchild, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        insert(root-&gt;rchild, x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新建树"><a href="#新建树" class="headerlink" title="新建树"></a>新建树</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">node* Create(<span class="keyword">int</span> data[],<span class="keyword">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">    node* root = NULL;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        insert(root, data[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="寻找树的最大值"><a href="#寻找树的最大值" class="headerlink" title="寻找树的最大值"></a>寻找树的最大值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">node* findMax(node* root)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(root-&gt;rchild != NULL)&#123;</span><br><span class="line">        root = root-&gt;rchild;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="寻找树的最小值"><a href="#寻找树的最小值" class="headerlink" title="寻找树的最小值"></a>寻找树的最小值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">node* findMin(node* root)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(root-&gt;lchild != NULL)&#123;</span><br><span class="line">        root = root-&gt;lchild;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除结点"><a href="#删除结点" class="headerlink" title="删除结点"></a>删除结点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(node* &amp;root, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == NULL) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(root-&gt;data == x)&#123;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;lchild == NULL &amp;&amp; root-&gt;rchild ==NULL)&#123;</span><br><span class="line">            root = NULL;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;lchild != NULL)&#123;</span><br><span class="line">            node* pre = findMax(root-&gt;lchild);</span><br><span class="line">            root-&gt;data = pre-&gt;data;</span><br><span class="line">            deleteNode(root-&gt;lchild,pre-&gt;data);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            node* next = findMin(root-&gt;rchild);</span><br><span class="line">            root-&gt;data = next-&gt;data;</span><br><span class="line">            deleteNode(root-&gt;rchild, next-&gt;data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;data &gt; x)&#123;</span><br><span class="line">        deleteNode(root-&gt;lchild, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        deleteNode(root-&gt;rchild,x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="后续有机会会更新相关注解和详细讲解，不足之处，还望指正。"><a href="#后续有机会会更新相关注解和详细讲解，不足之处，还望指正。" class="headerlink" title="后续有机会会更新相关注解和详细讲解，不足之处，还望指正。"></a>后续有机会会更新相关注解和详细讲解，不足之处，还望指正。</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/18/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%A8%A1%E7%89%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-二叉平衡树模版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
